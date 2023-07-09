@@ -12,7 +12,7 @@ pipeline {
 
         stage('docker run') {
           steps {
-            bat(returnStdout: true, script: 'cd backend && docker -p -d  3000:3000 wagutiwarren/calculator')
+            bat(returnStdout: true, script: 'cd backend && docker --publish --detach  3000:3000 wagutiwarren/calculator')
           }
         }
 
