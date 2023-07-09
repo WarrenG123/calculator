@@ -10,15 +10,15 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 // Build frontend component
-                sh 'cd frontend && npm install' // Install frontend dependencies
-                sh 'cd frontend && npm run dev' // Build frontend assets
+                bat 'cd frontend && npm install' // Install frontend dependencies
+                bat 'cd frontend && npm run dev' // Build frontend assets
             }
         }
         stage('Build Backend') {
             steps {
                 // Build backend component
-                sh 'cd backend && npm install --production' 
-                sh 'cd backend && node app.js ' 
+                bat 'cd backend && npm install --production' 
+                bat 'cd backend && node app.js ' 
             }
          }
         // stage('Test') {
