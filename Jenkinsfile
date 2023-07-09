@@ -1,57 +1,19 @@
 pipeline {
-    agent any
-    stages {
-        stage('Checkout') {
-            steps {
-                // Checkout source code from Git repository
-                git 'https://github.com/WarrenG123/calculator'
-            }
-        }
-        stage('Build Frontend') {
-            steps {
-                // Build frontend component
-                bat 'cd frontend && npm install' // Install frontend dependencies
-                bat 'cd frontend && npm run dev' // Build frontend assets
-            }
-        }
-        stage('Build Backend') {
-            steps {
-                // Build backend component
-                bat 'cd backend && npm install --production' 
-                bat 'cd backend && node app.js ' 
-            }
-         }
-        // stage('Test') {
-        //     steps {
-        //         // Run tests for frontend and backend
-        //         sh 'cd frontend && npm run test' // Run frontend tests
-        //         sh 'cd backend && ./gradlew test' // Run backend tests
-        //     }
-        // }
-        // stage('Containerize') {
-        //     steps {
-        //         // Build Docker images for frontend and backend
-        //         sh 'cd frontend && docker build -t frontend-image .' // Build frontend image
-        //         sh 'cd backend && docker build -t backend-image .' // Build backend image
-        //     }
-        // }
-        // stage('Deploy') {
-        //     steps {
-        //         // Deploy frontend and backend containers using Docker Compose
-        //         sh 'docker-compose up -d' // Start containers defined in docker-compose.yml
-        //     }
-        // }
-        // stage('Post-deployment') {
-        //     steps {
-        //         // Perform post-deployment actions, such as smoke tests or notifications
-        //         // ...
-        //     }
-        // }
-        // stage('Cleanup') {
-        //     steps {
-        //         // Cleanup temporary resources or artifacts
-        //         // ...
-        //     }
-        // }
+  agent any
+  stages {
+    stage('Build Frontend') {
+      steps {
+        bat 'cd frontend && npm install'
+        bat 'cd frontend && npm run dev'
+      }
     }
+
+    stage('Build Backend') {
+      steps {
+        bat 'cd backend && npm install --production'
+        bat 'cd backend && node app.js '
+      }
+    }
+
+  }
 }
